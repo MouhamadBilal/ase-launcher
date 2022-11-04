@@ -1,2 +1,2 @@
 # ase-launcher
-Create a launcher 
+Create a launcher for PY games
