@@ -8,23 +8,23 @@ class SNAKE:
         self.direction = Vector2(1,0)
         self.new_block = False
 
-        self.head_up = pygame.image.load('image/head_up.png').convert_alpha()
-        self.head_down = pygame.image.load('image/head_down.png').convert_alpha()
-        self.head_right = pygame.image.load('image/head_right.png').convert_alpha()
-        self.head_left = pygame.image.load('image/head_left.png').convert_alpha()
+        self.head_up = pygame.image.load('ase-launcher/snake/image/head_up.png').convert_alpha()
+        self.head_down = pygame.image.load('ase-launcher/snake/image/head_down.png').convert_alpha()
+        self.head_right = pygame.image.load('ase-launcher/snake/image/head_right.png').convert_alpha()
+        self.head_left = pygame.image.load('ase-launcher/snake/image/head_left.png').convert_alpha()
 		
-        self.tail_up = pygame.image.load('image/tail_up.png').convert_alpha()
-        self.tail_down = pygame.image.load('image/tail_down.png').convert_alpha()
-        self.tail_right = pygame.image.load('image/tail_right.png').convert_alpha()
-        self.tail_left = pygame.image.load('image/tail_left.png').convert_alpha()
+        self.tail_up = pygame.image.load('ase-launcher/snake/image/tail_up.png').convert_alpha()
+        self.tail_down = pygame.image.load('ase-launcher/snake/image/tail_down.png').convert_alpha()
+        self.tail_right = pygame.image.load('ase-launcher/snake/image/tail_right.png').convert_alpha()
+        self.tail_left = pygame.image.load('ase-launcher/snake/image/tail_left.png').convert_alpha()
 
-        self.body_vertical = pygame.image.load('image/body_vertical.png').convert_alpha()
-        self.body_horizontal = pygame.image.load('image/body_horizontal.png').convert_alpha()
+        self.body_vertical = pygame.image.load('ase-launcher/snake/image/body_vertical.png').convert_alpha()
+        self.body_horizontal = pygame.image.load('ase-launcher/snake/image/body_horizontal.png').convert_alpha()
 
-        self.body_tr = pygame.image.load('image/body_tr.png').convert_alpha()
-        self.body_tl = pygame.image.load('image/body_tl.png').convert_alpha()
-        self.body_br = pygame.image.load('image/body_br.png').convert_alpha()
-        self.body_bl = pygame.image.load('image/body_bl.png').convert_alpha()
+        self.body_tr = pygame.image.load('ase-launcher/snake/image/body_tr.png').convert_alpha()
+        self.body_tl = pygame.image.load('ase-launcher/snake/image/body_tl.png').convert_alpha()
+        self.body_br = pygame.image.load('ase-launcher/snake/image/body_br.png').convert_alpha()
+        self.body_bl = pygame.image.load('ase-launcher/snake/image/body_bl.png').convert_alpha()
 
 
     def draw_snake(self):
@@ -154,7 +154,7 @@ if __name__ == '__main__':
 
     #Limit max framrate because depedning ofthe computer speed of game would vary and we want consistency
     clock = pygame.time.Clock()
-    apple = pygame.image.load('image/apple.png').convert_alpha()
+    apple = pygame.image.load('ase-launcher/snake/image/apple.png').convert_alpha()
     game_font = pygame.font.Font(None,25)
 
 
@@ -187,7 +187,7 @@ if __name__ == '__main__':
                         main_game.snake.direction = Vector2(-1,0)
 
 
-    screen.fill((175,215,70))
-    main_game.draw_element()
-    pygame.display.update()
-    clock.tick(60)#Setting the clock option
+            screen.fill((175,215,70))
+            main_game.draw_element()
+            pygame.display.update()
+            clock.tick(60)#Setting the clock option

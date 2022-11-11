@@ -6,12 +6,13 @@ class Launcher(tk.Tk):
         tk.Tk.__init__(self)
         self.creer_widgets()
 
-    def open_text(text):
-            os.startfile("filename.txt")
+    def open_text(event):
+            os.startfile("ase-launcher\snake\Snake.py")
 
     def creer_widgets(self):
-        self.bouton = tk.Button(self, text="filename", command=self.open_text)
+        self.bouton = tk.Button(self, text="snake", command=self.open_text)
         self.bouton.pack()
+        
 
 if __name__ == "__main__":
     app = Launcher()
