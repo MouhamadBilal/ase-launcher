@@ -1,18 +1,25 @@
 import tkinter as tk
-import os
+import os,subprocess,sys
 from tkinter import *
 class Launcher(tk.Tk):
-
-    def open_file(event):
-        os.startfile("snake\Snake.py")
-    def __init__(self):
+ 
+ def __init__(self):
         tk.Tk.__init__(self)
         self.creer_widgets()
 
-    def creer_widgets(self):
+ def creer_widgets(self):
         self.bouton = tk.Button(self, text="snake", command=self.open_file)
         self.bouton.pack()
 
+ def open_file(event):
+    if sys.platform == "win32":
+        os.startfile("snake/Snake.py")
+    else:
+        "python" if sys.platform == "darwin" else "xdg-open"
+        subprocess.run([sys.executable,"snake/Snake.py" ])
+    
+   
+   
 
 if __name__ == "__main__":
     app = Launcher()
