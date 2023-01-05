@@ -55,13 +55,220 @@ def title_screen():
     
 def help_menu():
     print('##### Welcome to Shell RPG #####')
-    print('Use Up, Down, Left, Right to move')
-    print('Type your cmmands to them')
-    print('Use "look" to inspect')
+    print('- Use Up, Down, Left, Right to move')
+    print('- Type your cmmands to them')
+    print('- Use "look" to inspect')
     
     print("     __Advice__:")
     
     print("- Don't forget your commands... It's dangerous to go alone")
     
     title_screen_select()
+    
+    # Fonctionnalité in-game
+    
+    
+    # Carte
+    
+    #|_|_|_|_|
+    #|_|_|_|_|
+    #|_|_|_|_|
+    #|_|_|_|_|
+    
+ZONENAME = ''
+DESCRIPTION = 'description'
+EXAMINATION = 'examine'
+SOLVED = False
+    
+UP = 'up', 'north'
+DOWN = 'down', 'south'
+LEFT = 'left', 'west'
+RIGHT = 'right', 'east'
+    
+solved_place = { 'a1': False, 'a2': False, 'a3': False, 'a4': False,
+                'b1': False, 'b2': False, 'b3': False, 'b4': False,
+                'c1': False, 'c2': False, 'c3': False, 'c4': False,
+                'd1': False, 'd2': False, 'd3': False, 'd4': False
+                }
+
+zonemap = {
+    'a1': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    
+    
+    'a2': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+       
+    },
+    
+    'a3': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+       
+    },
+    
+    'a4': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+       
+    },
+    
+    'b1': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+       
+    },
+    'b2': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+       
+    },
+    'b3': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+       
+    },
+    'b4': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+       
+    },
+    
+    'c1': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    'c2': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    'c3': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    
+    'c4': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    
+    'd1': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    
+    'd2': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    
+    'd3': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+    
+    'd4': {
+       ZONENAME: "",
+       DESCRIPTION:'',
+       EXAMINATION:'examination',
+       SOLVED:False,
+       UP: 'up',
+       DOWN: 'down',
+       LEFT: 'west',
+       RIGHT: 'east'
+    },
+}
     
