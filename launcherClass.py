@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 from tkinter import *
+import customtkinter
 
 
 class Launcher(tk.Tk):
@@ -14,6 +15,8 @@ class Launcher(tk.Tk):
     def creer_widgets(self):
         self.bouton = tk.Button(self, text="snake", command=self.open_file)
         self.bouton.pack()
+
+# Compatibilité avec l'os utilisé. (Windows, Ubuntu)
 
     def open_file(event):
         if sys.platform == "win32":
