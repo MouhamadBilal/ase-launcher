@@ -5,7 +5,8 @@ import pygame
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
-        self.image = pygame.image.load('../image/player.png').convert_alpha()
+        self.image = pygame.image.load(
+            'spaceInvaders\image\player.png').convert_alpha()
         self.rect = self.image.get_rect(midbottom=pos)
 
     def get_input(self):
@@ -24,7 +25,8 @@ def update(self):
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, constraint, speed):
         super().__init__()
-        self.image = pygame.image.load('./image/player.png').convert_alpha()
+        self.image = pygame.image.load(
+            'spaceInvaders\image\player.png').convert_alpha()
         self.rect = self.image.get_rect(midbottom=pos)
         self.speed = speed
         self.max_x_constraint = constraint
@@ -34,7 +36,7 @@ class Player(pygame.sprite.Sprite):
 
         self.lasers = pygame.sprite.Group()
 
-        self.laser_sound = pygame.mixer.Sound('./son/laser.wav')
+        self.laser_sound = pygame.mixer.Sound('spaceInvaders\son\laser.wav')
         self.laser_sound.set_volume(0.5)
 
     def get_input(self):
