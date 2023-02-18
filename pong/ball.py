@@ -2,6 +2,7 @@ from turtle import Turtle
 
 class Ball(Turtle):
     def __init__(self):
+        super().__init__()
         self.color("white")
         self.shape("circle")
         self.penup()
@@ -22,6 +23,6 @@ class Ball(Turtle):
         self.time_speed *= 0.8
         
     def restart(self):
-        self.goto(0,0)
+        self.goto(0, 0)
         self.time_speed = 0.1
         self.bounce_x()

@@ -12,7 +12,8 @@ class Paddle(Turtle):
         self.penup()
         self.goto(position)
         self.color("white")
-        self.resizemode(stretch_width=5, stretch_len=1)
+        self.resizemode("user")
+        self.shapesize(stretch_wid=5, stretch_len=1)
         
         
 # Création des mouvements des Paddle
@@ -20,6 +21,6 @@ class Paddle(Turtle):
         new_y = self.ycor() + 20
         self.goto(self.xcor(), new_y)
 
-    def up(self):
-        new_y = self.ycor() + 20
+    def down(self):
+        new_y = self.ycor() - 20
         self.goto(self.xcor(), new_y)
