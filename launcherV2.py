@@ -6,6 +6,7 @@ from tkinter import *
 import customtkinter
 from PIL import Image
 import customtkinter as ctk
+from PIL import Image, ImageTk
 
 
 customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
@@ -23,7 +24,7 @@ def open_file():
             subprocess.run([sys.executable, "snake/Snake.py"])
 
 # Use CTkButton instead of tkinter Button
-button = customtkinter.CTkButton(master=app, text="Snake", command=open_file)
+button = customtkinter.CTkButton(master=app, text= "snake", command=open_file)
 button.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
 
 app.mainloop()
