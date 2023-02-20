@@ -60,36 +60,36 @@ class SNAKE:
         self.new_block = False
 
         self.head_up = pygame.image.load(
-            'snake/image/head_up.png').convert_alpha()
+            'image/head_up.png').convert_alpha()
         self.head_down = pygame.image.load(
-            'snake/image/head_down.png').convert_alpha()
+            'image/head_down.png').convert_alpha()
         self.head_right = pygame.image.load(
-            'snake/image/head_right.png').convert_alpha()
+            'image/head_right.png').convert_alpha()
         self.head_left = pygame.image.load(
-            'snake/image/head_left.png').convert_alpha()
+            'image/head_left.png').convert_alpha()
 
         self.tail_up = pygame.image.load(
-            'snake/image/tail_up.png').convert_alpha()
+            'image/tail_up.png').convert_alpha()
         self.tail_down = pygame.image.load(
-            'snake/image/tail_down.png').convert_alpha()
+            'image/tail_down.png').convert_alpha()
         self.tail_right = pygame.image.load(
-            'snake/image/tail_right.png').convert_alpha()
+            'image/tail_right.png').convert_alpha()
         self.tail_left = pygame.image.load(
-            'snake/image/tail_left.png').convert_alpha()
+            'image/tail_left.png').convert_alpha()
 
         self.body_vertical = pygame.image.load(
-            'snake/image/body_vertical.png').convert_alpha()
+            'image/body_vertical.png').convert_alpha()
         self.body_horizontal = pygame.image.load(
-            'snake/image/body_horizontal.png').convert_alpha()
+            'image/body_horizontal.png').convert_alpha()
 
         self.body_tr = pygame.image.load(
-            'snake/image/body_tr.png').convert_alpha()
+            'image/body_tr.png').convert_alpha()
         self.body_tl = pygame.image.load(
-            'snake/image/body_tl.png').convert_alpha()
+            'image/body_tl.png').convert_alpha()
         self.body_br = pygame.image.load(
-            'snake/image/body_br.png').convert_alpha()
+            'image/body_br.png').convert_alpha()
         self.body_bl = pygame.image.load(
-            'snake/image/body_bl.png').convert_alpha()
+            'image/body_bl.png').convert_alpha()
 
     def draw_snake(self):
         self.update_head_graphics()
@@ -240,7 +240,7 @@ if __name__ == '__main__':
         (cell_number * cell_size, cell_number * cell_size))
 
     clock = pygame.time.Clock()
-    apple = pygame.image.load('snake/image/apple.png').convert_alpha()
+    apple = pygame.image.load('image/apple.png').convert_alpha()
     game_font = pygame.font.Font(None, 25)
 
     SCREEN_UPDATE = pygame.USEREVENT
