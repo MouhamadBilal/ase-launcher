@@ -1,15 +1,8 @@
-#!/usr/bin/env python
-
-# Space Invaders
-# Created by Lee Robinson
-
 from pygame import *
 import sys
 from os.path import abspath, dirname
 from random import choice
 
-
-# ajout des base path pour pour eviter erreur de chemins
 BASE_PATH = abspath(dirname(__file__))
 FONT_PATH = BASE_PATH + '/fonts/'
 IMAGE_PATH = BASE_PATH + '/images/'
@@ -25,8 +18,6 @@ RED = (237, 28, 36)
 
 SCREEN = display.set_mode((800, 600))
 FONT = FONT_PATH + 'space_invaders.ttf'
-
-# initialise les images en fonction des noms present dans la liste
 IMG_NAMES = ['ship', 'mystery',
              'enemy1_1', 'enemy1_2',
              'enemy2_1', 'enemy2_2',
@@ -36,13 +27,11 @@ IMG_NAMES = ['ship', 'mystery',
 IMAGES = {name: image.load(IMAGE_PATH + '{}.png'.format(name)).convert_alpha()
           for name in IMG_NAMES}
 
-# blocker = obstacle au dessus du joueur dans le jeu
 BLOCKERS_POSITION = 450
-ENEMY_DEFAULT_POSITION = 65  # valeur a chaque nousvelle partie
+ENEMY_DEFAULT_POSITION = 65  # Initial value for a new game
 ENEMY_MOVE_DOWN = 35
 
 
-# class du vaisseau joueur
 class Ship(sprite.Sprite):
     def __init__(self):
         sprite.Sprite.__init__(self)
@@ -56,8 +45,6 @@ class Ship(sprite.Sprite):
         if keys[K_RIGHT] and self.rect.x < 740:
             self.rect.x += self.speed
         game.screen.blit(self.image, self.rect)
-
-# classe roquet
 
 
 class Bullet(sprite.Sprite):
@@ -110,7 +97,6 @@ class Enemy(sprite.Sprite):
         self.images.append(transform.scale(img2, (40, 35)))
 
 
-# repartition de deplacement et positions des enemies
 class EnemiesGroup(sprite.Group):
     def __init__(self, columns, rows):
         sprite.Group.__init__(self)
@@ -130,10 +116,6 @@ class EnemiesGroup(sprite.Group):
         self._leftAliveColumn = 0
         self._rightAliveColumn = columns - 1
 
-
-# permet aux enemies de bouger apres un certain temps
-
-
     def update(self, current_time):
         if current_time - self.timer > self.moveTime:
             if self.direction == 1:
@@ -141,7 +123,6 @@ class EnemiesGroup(sprite.Group):
             else:
                 max_move = self.leftMoves + self.leftAddMove
 
-# Si deplacement superieur ou egal a la taille de l'ecran enemy descend d'une ligne
             if self.moveNumber >= max_move:
                 self.leftMoves = 30 + self.rightAddMove
                 self.rightMoves = 30 + self.leftAddMove
@@ -207,8 +188,6 @@ class EnemiesGroup(sprite.Group):
                 self.leftAddMove += 5
                 is_column_dead = self.is_column_dead(self._leftAliveColumn)
 
-# parametres des blockers
-
 
 class Blocker(sprite.Sprite):
     def __init__(self, size, color, row, column):
@@ -224,8 +203,6 @@ class Blocker(sprite.Sprite):
 
     def update(self, keys, *args):
         game.screen.blit(self.image, self.rect)
-
-# parametre de l'enemy mystere avec points random
 
 
 class Mystery(sprite.Sprite):
@@ -278,7 +255,6 @@ class EnemyExplosion(sprite.Sprite):
         self.rect = self.image.get_rect(topleft=(enemy.rect.x, enemy.rect.y))
         self.timer = time.get_ticks()
 
-# permnet de choisr couleur ecplosion en fonction de la couleur de l'enemy
     @staticmethod
     def get_image(row):
         img_colors = ['purple', 'blue', 'blue', 'green', 'green']
@@ -292,8 +268,6 @@ class EnemyExplosion(sprite.Sprite):
             game.screen.blit(self.image2, (self.rect.x - 6, self.rect.y - 6))
         elif 400 < passed:
             self.kill()
-
-# explosion de l'enemy mystere
 
 
 class MysteryExplosion(sprite.Sprite):
@@ -325,8 +299,6 @@ class ShipExplosion(sprite.Sprite):
         elif 900 < passed:
             self.kill()
 
-# parametre du mode de points de vies
-
 
 class Life(sprite.Sprite):
     def __init__(self, xpos, ypos):
@@ -351,6 +323,7 @@ class Text(object):
 
 class SpaceInvaders(object):
     def __init__(self):
+
         mixer.pre_init(44100, -16, 1, 4096)
         init()
         self.clock = time.Clock()
@@ -360,19 +333,20 @@ class SpaceInvaders(object):
         self.startGame = False
         self.mainScreen = True
         self.gameOver = False
-        # contre mesure pour le souci d'agrandissement espace entre les enemnis (increased each new round)
+        # Counter for enemy starting position (increased each new round)
         self.enemyPosition = ENEMY_DEFAULT_POSITION
-
-        # initialisation et parametreage du tect present dans le jeu
         self.titleText = Text(FONT, 50, 'Space Invaders', WHITE, 164, 155)
-        self.titleText2 = Text(FONT, 25, 'Press any key to continue', WHITE,
+        self.titleText2 = Text(FONT, 25, 'Appuyez sur une touche pour jouer', WHITE,
                                201, 225)
+        self.titleText3 = Text(
+            FONT, 25, 'Appuyez sur Echap pour quitter le jeu', WHITE, 100, 270)
         self.gameOverText = Text(FONT, 50, 'Game Over', WHITE, 250, 270)
         self.nextRoundText = Text(FONT, 50, 'Next Round', WHITE, 240, 270)
-        self.enemy1Text = Text(FONT, 25, '   =   10 pts', GREEN, 368, 270)
-        self.enemy2Text = Text(FONT, 25, '   =  20 pts', BLUE, 368, 320)
-        self.enemy3Text = Text(FONT, 25, '   =  30 pts', PURPLE, 368, 370)
-        self.enemy4Text = Text(FONT, 25, '   =  ?????', RED, 368, 420)
+        self.finalScore = Text(FONT, 50, 'SCORE =', WHITE, 250, 320)
+        self.enemy1Text = Text(FONT, 25, '   =   10 pts', GREEN, 368, 320)
+        self.enemy2Text = Text(FONT, 25, '   =  20 pts', BLUE, 368, 370)
+        self.enemy3Text = Text(FONT, 25, '   =  30 pts', PURPLE, 368, 420)
+        self.enemy4Text = Text(FONT, 25, '   =  ?????', RED, 368, 470)
         self.scoreText = Text(FONT, 20, 'Score', WHITE, 5, 5)
         self.livesText = Text(FONT, 20, 'Lives ', WHITE, 640, 5)
 
@@ -381,7 +355,6 @@ class SpaceInvaders(object):
         self.life3 = Life(769, 3)
         self.livesGroup = sprite.Group(self.life1, self.life2, self.life3)
 
-# OPTION DE RESET
     def reset(self, score):
         self.player = Ship()
         self.playerGroup = sprite.Group(self.player)
@@ -470,7 +443,6 @@ class SpaceInvaders(object):
                             self.bullets.add(rightbullet)
                             self.allSprites.add(self.bullets)
                             self.sounds['shoot2'].play()
-# Creer les enemi sur le plateau
 
     def make_enemies(self):
         enemies = EnemiesGroup(10, 5)
@@ -482,7 +454,6 @@ class SpaceInvaders(object):
                 enemies.add(enemy)
 
         self.enemies = enemies
-# faire les enemies tirer
 
     def make_enemies_shoot(self):
         if (time.get_ticks() - self.timer) > 700 and self.enemies:
@@ -505,7 +476,6 @@ class SpaceInvaders(object):
         score = scores[row]
         self.score += score
         return score
-# creer le menu
 
     def create_main_menu(self):
         self.enemy1 = IMAGES['enemy3_1']
@@ -516,11 +486,10 @@ class SpaceInvaders(object):
         self.enemy3 = transform.scale(self.enemy3, (40, 40))
         self.enemy4 = IMAGES['mystery']
         self.enemy4 = transform.scale(self.enemy4, (80, 40))
-        self.screen.blit(self.enemy1, (318, 270))
-        self.screen.blit(self.enemy2, (318, 320))
-        self.screen.blit(self.enemy3, (318, 370))
-        self.screen.blit(self.enemy4, (299, 420))
-# creer les collisions
+        self.screen.blit(self.enemy1, (318, 320))
+        self.screen.blit(self.enemy2, (318, 370))
+        self.screen.blit(self.enemy3, (318, 420))
+        self.screen.blit(self.enemy4, (299, 470))
 
     def check_collisions(self):
         sprite.groupcollide(self.bullets, self.enemyBullets, True, True)
@@ -558,7 +527,7 @@ class SpaceInvaders(object):
             self.makeNewShip = True
             self.shipTimer = time.get_ticks()
             self.shipAlive = False
-# creer game over quand enemies sont en bas de la map
+
         if self.enemies.bottom >= 540:
             sprite.groupcollide(self.enemies, self.playerGroup, True, True)
             if not self.player.alive() or self.enemies.bottom >= 600:
@@ -569,7 +538,6 @@ class SpaceInvaders(object):
         sprite.groupcollide(self.enemyBullets, self.allBlockers, True, True)
         if self.enemies.bottom >= BLOCKERS_POSITION:
             sprite.groupcollide(self.enemies, self.allBlockers, False, True)
-# creer un nouveau vaisseau apres colision avec missile
 
     def create_new_ship(self, createShip, currentTime):
         if createShip and (currentTime - self.shipTimer > 900):
@@ -578,26 +546,21 @@ class SpaceInvaders(object):
             self.playerGroup.add(self.player)
             self.makeNewShip = False
             self.shipAlive = True
-# creer game over
 
     def create_game_over(self, currentTime):
         self.screen.blit(self.background, (0, 0))
         passed = currentTime - self.timer
-        if passed < 750:
+        if passed < 2700:
             self.gameOverText.draw(self.screen)
-        elif 750 < passed < 1500:
-            self.screen.blit(self.background, (0, 0))
-        elif 1500 < passed < 2250:
-            self.gameOverText.draw(self.screen)
-        elif 2250 < passed < 2750:
-            self.screen.blit(self.background, (0, 0))
+            self.scoreText3.draw(self.screen)
+            self.scoreText4.draw(self.screen)
+
         elif passed > 3000:
             self.mainScreen = True
 
         for e in event.get():
             if self.should_exit(e):
                 sys.exit()
-# main
 
     def main(self):
         while True:
@@ -649,6 +612,10 @@ class SpaceInvaders(object):
                     self.allBlockers.update(self.screen)
                     self.scoreText2 = Text(FONT, 20, str(self.score), GREEN,
                                            85, 5)
+                    self.scoreText3 = Text(
+                        FONT, 50, str(self.score), GREEN, 520, 320)
+                    self.scoreText4 = Text(
+                        FONT, 50, 'SCORE :', WHITE, 250, 320)
                     self.scoreText.draw(self.screen)
                     self.scoreText2.draw(self.screen)
                     self.livesText.draw(self.screen)
