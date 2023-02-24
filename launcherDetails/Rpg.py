@@ -6,7 +6,6 @@ import os
 import subprocess
 import sys
 import wx
-import wx
 # begin wxGlade: dependencies
 # end wxGlade
 
