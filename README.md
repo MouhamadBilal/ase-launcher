@@ -14,7 +14,7 @@ Le launcher ainsi que les jeux ont été réalisé intégralement en python. Ain
 - Un tetris [Pygame]
 - Un shooter "Comet Fall" [Pygame]
 
-# Comment démarrer l'application
+## Comment démarrer l'application
 
 Afin de demarrer l'application, veuillez cliquer sur launcherDetails > app.py
 afin de run l'application desktop.
