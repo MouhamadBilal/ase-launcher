@@ -56,8 +56,8 @@ class Pong(wx.Panel):
         self.leParent.Layout()
     
     def open_file(self, event):
-        if sys.platform == "win32":
-            os.startfile("./pong/main.py")
+        if "python" if sys.platform == "win32" else "exe":
+            subprocess.run([sys.executable, "pong/main.py"])
         else:
             "python" if sys.platform == "darwin" else "xdg-open"
             subprocess.run([sys.executable, "pong/main.py"])
