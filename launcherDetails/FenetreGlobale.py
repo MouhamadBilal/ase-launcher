@@ -61,5 +61,5 @@ class FenetreGlobale(wx.Frame):
         self.panelDetailRpg.Hide()
         self.panelDetailTetris.Hide()
         self.Layout()
-
+        self.panel_1.Fit()
 # end of class FenetreGlobale
