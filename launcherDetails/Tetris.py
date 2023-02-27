@@ -56,8 +56,8 @@ class Tetris(wx.Panel):
         self.leParent.Layout()
 
     def open_file(self, event):  # wxGlade: Tetris.<event_handler>
-        if sys.platform == "win32":
-            os.startfile("TetrisGame/Tetris.py")
+        if "python" if sys.platform == "win32" else "exe":
+            subprocess.run([sys.executable, "TetrisGame/Tetris.py"])
         else:
             "python" if sys.platform == "darwin" else "xdg-open"
             subprocess.run([sys.executable, "TetrisGame/Tetris.py"])

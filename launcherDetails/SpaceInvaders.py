@@ -57,8 +57,8 @@ class SpaceInvaders(wx.Panel):
         self.leParent.Layout()
 
     def open_file(self, event):  # wxGlade: SpaceInvaders.<event_handler>
-        if sys.platform == "win32":
-            os.startfile("spaceInvaders/spaceInvaders.py")
+        if "python" if sys.platform == "win32" else "exe":
+            subprocess.run([sys.executable, "spaceInvaders/spaceInvaders.py"])
         else:
             "python" if sys.platform == "darwin" else "xdg-open"
             subprocess.run([sys.executable, "spaceInvaders/spaceInvaders.py"])
