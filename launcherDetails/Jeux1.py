@@ -60,8 +60,8 @@ class Jeux1(wx.Panel):
 
    
     def open_file(self, event):  # wxGlade: Pong.<event_handler>
-        if sys.platform == "win32":
-            os.startfile("./snake/Snake.py")
+        if "python" if sys.platform == "win32" else "exe":
+            subprocess.run([sys.executable, "snake/Snake.py"])
         else:
             "python" if sys.platform == "darwin" else "xdg-open"
             subprocess.run([sys.executable, "snake/Snake.py"])

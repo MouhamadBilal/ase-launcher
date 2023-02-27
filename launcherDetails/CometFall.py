@@ -56,8 +56,8 @@ class CometFall(wx.Panel):
         self.leParent.Layout()
 
     def open_file(self, event):  # wxGlade: CometFall.<event_handler>
-        if sys.platform == "win32":
-            os.startfile("Game_CometFall/cometFall/main.py")
+        if "python" if sys.platform == "win32" else "exe":
+            subprocess.run([sys.executable, "Game_CometFall/cometFall/main.py"])
         else:
             "python" if sys.platform == "darwin" else "xdg-open"
             subprocess.run([sys.executable, "Game_CometFall/cometFall/main.py"])

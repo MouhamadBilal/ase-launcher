@@ -58,8 +58,8 @@ class Rpg(wx.Panel):
         self.leParent.Layout()
 
     def open_file(self, event):  # wxGlade: Rpg.<event_handler>
-        if sys.platform == "win32":
-            os.startfile("rpg_py/main.py")
+        if "python" if sys.platform == "win32" else "exe":
+            subprocess.run([sys.executable, "rpg_py/main.py"])
         else:
             "python" if sys.platform == "darwin" else "xdg-open"
             subprocess.run([sys.executable, "rpg_py/main.py"])
