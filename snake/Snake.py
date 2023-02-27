@@ -13,32 +13,6 @@ red = (255, 0, 0)
 green = (0, 155, 0)
 
 
-def pause():
-    paused = True
-
-    message_to_screen("Pause", black, -100, size="large")
-
-    message_to_screen(
-        "Appuyez sur G pour continuer ou lancer la partie", black, 25)
-    pygame.display.update()
-
-    while paused:
-        for event in pygame.EVENT.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_g:
-                    paused == False
-
-                elif event.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    quit()
-
-        screen.fill(white)
-        clock.tick(60)
-
 
 def text_objects(text, color):
     game_font = pygame.font.init()

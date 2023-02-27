@@ -10,7 +10,7 @@
 import wx
 from FenetreGlobale import FenetreGlobale
 
-
+    
 class MyApp(wx.App):
     def OnInit(self):
         self.frame = FenetreGlobale(None, wx.ID_ANY, "")
