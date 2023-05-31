@@ -43,6 +43,7 @@ def game_over():
 mixer.music.load('spaceInvaders/data/background.wav')
 mixer.music.play(-1)
 
+
 # player
 playerImage = pygame.image.load('spaceInvaders/data/spaceship.png')
 player_X = 370
