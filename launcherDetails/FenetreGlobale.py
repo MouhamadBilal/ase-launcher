@@ -21,7 +21,8 @@ from Tetris import Tetris
 class FenetreGlobale(wx.Frame):
     def __init__(self, *args, **kwds):
         # begin wxGlade: FenetreGlobale.__init__
-        kwds["style"] = kwds.get("style", 0) | wx.CAPTION | wx.CLIP_CHILDREN | wx.CLOSE_BOX | wx.MINIMIZE_BOX | wx.RESIZE_BORDER | wx.SYSTEM_MENU
+        kwds["style"] = kwds.get(
+            "style", 0) | wx.CAPTION | wx.CLIP_CHILDREN | wx.CLOSE_BOX | wx.MINIMIZE_BOX | wx.RESIZE_BORDER | wx.SYSTEM_MENU
         wx.Frame.__init__(self, *args, **kwds)
         self.SetSize((1384, 789))
         self.SetTitle("Choix des jeux")
@@ -37,15 +38,17 @@ class FenetreGlobale(wx.Frame):
         self.Layout()
         # end wxGlade
         # ajout des différents panels de l'application
-        self.panelMaitre = PanneauMaitre( self, self.panel_1, wx.ID_ANY)
+        self.panelMaitre = PanneauMaitre(self, self.panel_1, wx.ID_ANY)
         self.panelDetailJeux1 = Jeux1(self, self.panel_1, wx.ID_ANY)
-        self.panelDetailSpaceInvaders = SpaceInvaders(self, self.panel_1, wx.ID_ANY)
+        self.panelDetailSpaceInvaders = SpaceInvaders(
+            self, self.panel_1, wx.ID_ANY)
         self.panelDetailCometFall = CometFall(self, self.panel_1, wx.ID_ANY)
         self.panelDetailPong = Pong(self, self.panel_1, wx.ID_ANY)
         self.panelDetailRpg = Rpg(self, self.panel_1, wx.ID_ANY)
         self.panelDetailTetris = Tetris(self, self.panel_1, wx.ID_ANY)
         self.sizer = wx.BoxSizer(wx.VERTICAL)
-        self.sizer.Add(self.panelMaitre, 1, wx.EXPAND)   # on met dans la même case no 1 du sizer_1 les 2 panels. Ils seront montrés de façon exclusive
+        # on met dans la même case no 1 du sizer_1 les 2 panels. Ils seront montrés de façon exclusive
+        self.sizer.Add(self.panelMaitre, 1, wx.EXPAND)
         self.sizer.Add(self.panelDetailJeux1, 1, wx.EXPAND)
         self.sizer.Add(self.panelDetailSpaceInvaders, 1, wx.EXPAND)
         self.sizer.Add(self.panelDetailCometFall, 1, wx.EXPAND)
@@ -53,7 +56,8 @@ class FenetreGlobale(wx.Frame):
         self.sizer.Add(self.panelDetailRpg, 1, wx.EXPAND)
         self.sizer.Add(self.panelDetailTetris, 1, wx.EXPAND)
         self.panel_1.SetSizer(self.sizer)
-        self.panelMaitre.Show()   # on décide ici de montrer la page des jeux dès l'ouverture de l'appli
+        # on décide ici de montrer la page des jeux dès l'ouverture de l'appli
+        self.panelMaitre.Show()
         self.panelDetailJeux1.Hide()
         self.panelDetailSpaceInvaders.Hide()
         self.panelDetailCometFall.Hide()
