@@ -122,7 +122,7 @@ while running:
             if event.key == pygame.K_SPACE:
 
                 # Fixing the change of direction of bullet
-                if bullet_state is "rest":
+                if bullet_state == "rest":
                     bullet_X = player_X
                     bullet(bullet_X, bullet_Y)
                     bullet_sound = mixer.Sound('spaceInvaders/data/bullet.wav')
@@ -139,7 +139,7 @@ while running:
     if bullet_Y <= 0:
         bullet_Y = 600
         bullet_state = "rest"
-    if bullet_state is "fire":
+    if bullet_state == "fire":
         bullet(bullet_X, bullet_Y)
         bullet_Y -= bullet_Ychange
 
